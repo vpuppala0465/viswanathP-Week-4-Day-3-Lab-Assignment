@@ -16,10 +16,29 @@ function DisplayProducts(props) {
 
   return (
     <div>
+      <div className="sort-by d-flex justify-content-center align-items-center my-4">
+        <label htmlFor="sort-price" className="m-0 mr-3">
+          Sort Price By:
+        </label>
+        <select
+          id="sort-price"
+          value={props.sortType}
+          onChange={(e) => props.onSort(e.target.value)}
+        >
+          <option value="normal">Normal</option>
+          <option value="lowest">Lowest</option>
+          <option value="highest">Highest</option>
+        </select>
+      </div>
       <ListGroup>
         {props.products.map((product) => (
           <ListGroupItem key={product.id} className="product rounded-0">
-            <h5 className="product-name">{product.desc}</h5>
+            <h5 className="product-name">
+              {product.desc}
+              <span className="product-price text-danger ml-3">
+                ${product.price}
+              </span>
+            </h5>
             <div className="d-flex align-items-center">
               <img
                 src={product.image}

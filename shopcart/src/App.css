@@ -115,3 +115,11 @@
 .signin form input[type="email"] {
   width: 150px;
 }
+
+.sort-by {
+  font-size: 0.8rem;
+}
+
+.product-price {
+  font-size: 0.95rem;
+}

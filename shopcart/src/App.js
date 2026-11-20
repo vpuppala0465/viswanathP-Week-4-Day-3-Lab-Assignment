@@ -9,7 +9,8 @@ class App extends Component {
     super(props);
     this.state = {
       siteName: "Shop to React",
-      products: products
+      products: products,
+      sortType: "normal"
     };
   }
 
@@ -29,6 +30,21 @@ class App extends Component {
     this.setState({ products: products });
   };
 
+  handleSort = (sortType) => {
+    const products = [...this.state.products];
+    switch (sortType) {
+      case "lowest":
+        products.sort((a, b) => a.price - b.price);
+        break;
+      case "highest":
+        products.sort((a, b) => b.price - a.price);
+        break;
+      default:
+        products.sort((a, b) => a.id - b.id);
+    }
+    this.setState({ products: products, sortType: sortType });
+  };
+
   render() {
     return (
       <div className="container mt-4">
@@ -37,6 +53,8 @@ class App extends Component {
           products={this.state.products}
           onIncrement={this.handleIncrement}
           onDecrement={this.handleDecrement}
+          sortType={this.state.sortType}
+          onSort={this.handleSort}
         />
       </div>
     );

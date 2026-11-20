@@ -31,6 +31,8 @@ function Navbar(props) {
               products={props.products}
               onIncrement={props.onIncrement}
               onDecrement={props.onDecrement}
+              sortType={props.sortType}
+              onSort={props.onSort}
             />
           }
         />
